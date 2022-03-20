@@ -1,5 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
-# npx yes npm An installation free tool for ,
-# The essence is that it can be temporary download Execute a binary 
-npx --no-install commitlint --edit $1
+
+.git/hooks/commit-msg $1
