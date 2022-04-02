@@ -57,7 +57,7 @@ const makeSut = (): SutTypes => {
 }
 
 describe('SignUp Controller', () => {
-  test('Should return 400 if no name is provided', async () => {
+  test('Should return 400 if no name provided', async () => {
     const { sut } = makeSut()
     const httpRequest = {
       body: {
@@ -70,7 +70,7 @@ describe('SignUp Controller', () => {
     expect(httpResponse).toEqual(badRequest(new MissingParamError('name')))
   })
 
-  test('Should return 400 if no email is provided', async () => {
+  test('Should return 400 if no email provided', async () => {
     const { sut } = makeSut()
     const httpRequest = {
       body: {
@@ -83,7 +83,7 @@ describe('SignUp Controller', () => {
     expect(httpResponse).toEqual(badRequest(new MissingParamError('email')))
   })
 
-  test('Should return 400 if no password is provided', async () => {
+  test('Should return 400 if no password provided', async () => {
     const { sut } = makeSut()
     const httpRequest = {
       body: {
@@ -96,7 +96,7 @@ describe('SignUp Controller', () => {
     expect(httpResponse).toEqual(badRequest(new MissingParamError('password')))
   })
 
-  test('Should return 400 if no password confirmation is provided', async () => {
+  test('Should return 400 if no password confirmation provided', async () => {
     const { sut } = makeSut()
     const httpRequest = {
       body: {
@@ -124,7 +124,7 @@ describe('SignUp Controller', () => {
     expect(httpResponse).toEqual(badRequest(new InvalidParamError('passwordConfirmation')))
   })
 
-  test('Should return 400 if no an invalid email is provided', async () => {
+  test('Should return 400 if no an invalid email provided', async () => {
     const { sut, emailValidatorStub } = makeSut()
     jest.spyOn(emailValidatorStub, 'isValid').mockReturnValueOnce(false)
     const httpResponse = await sut.handle(makeFakeRequest())
@@ -167,7 +167,7 @@ describe('SignUp Controller', () => {
     })
   })
 
-  test('Should return 200 if valid data is provided', async () => {
+  test('Should return 200 if valid data provided', async () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle(makeFakeRequest())
     expect(httpResponse).toEqual(ok(makeFakeAccount()))
